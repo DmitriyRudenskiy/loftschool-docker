@@ -18,6 +18,7 @@
     <div class="row">
         <div class="col-2">
             <ul class="list-unstyled">
+                <li><a href="http://mail.local/" class="btn btn-link" target="_blank">MailHog</a></li>
                 <li><a href="http://phpmyadmin.local" class="btn btn-link" target="_blank">phpMyAdmin</a></li>
                 <li><a href="http://wordpress.local" class="btn btn-link" target="_blank">WordPress</a></li>
                 <li><a href="http://laravel.local" class="btn btn-link" target="_blank">Laravel</a></li>

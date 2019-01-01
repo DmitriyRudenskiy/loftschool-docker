@@ -30,8 +30,8 @@ RUN set -xe; \
 
 # Config php
 RUN echo 'sendmail_path = /usr/sbin/sendmail -S mail:1025' > /usr/local/etc/php/php.ini \
-    && echo "memory_limit=-1" > /usr/local/etc/php/php.ini \
-    && echo "date.timezone=${PHP_TIMEZONE:-UTC}" > /usr/local/etc/php/php.ini
+    && echo "memory_limit=-1" >> /usr/local/etc/php/php.ini \
+    && echo "date.timezone=${PHP_TIMEZONE:-UTC}" >> /usr/local/etc/php/php.ini
 
 # Setup the Composer installer
 RUN curl --silent --fail --location --retry 3 --output /tmp/composer-setup.php --url https://getcomposer.org/installer \
