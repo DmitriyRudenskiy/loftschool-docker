@@ -1,0 +1,40 @@
+version: "2"
+
+services:
+   mail:
+      image: mailhog/mailhog
+      container_name: mail
+      restart: always
+      ports:
+        - 1025:1025
+        - 8025:8025
+   mariadb:
+       image: mariadb:10.1.37
+       container_name: mariadb
+       restart: always
+       volumes:
+       - ../mysql:/var/lib/mysql
+       environment:
+           MYSQL_ROOT_PASSWORD: root
+           MYSQL_DATABASE: first_db
+   php:
+       build: ./php
+       container_name: php72
+       restart: always
+       working_dir: /var/www
+       volumes:
+       - ../:/var/www
+       links:
+       - mariadb:db
+       - mail
+   nginx:
+       build: ./nginx
+       container_name: nginx
+       ports:
+       - 80:80
+       volumes_from:
+       - php
+       restart: always
+       links:
+       - php
+       - mail
