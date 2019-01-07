@@ -12,7 +12,7 @@ RUN set -ex; \
     libwebp-dev \
     libxpm-dev; \
     docker-php-ext-configure gd --with-freetype-dir=/usr --with-jpeg-dir=/usr --with-webp-dir=/usr --with-png-dir=/usr --with-xpm-dir=/usr; \
-    docker-php-ext-install bz2 gd mysqli opcache zip; \
+    docker-php-ext-install bz2 gd mysqli opcache zip pdo pdo_mysql; \
     runDeps="$( \
     scanelf --needed --nobanner --format '%n#p' --recursive /usr/local/lib/php/extensions \
     | tr ',' '\n' \
