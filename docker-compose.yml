@@ -8,15 +8,17 @@ services:
       ports:
         - 1025:1025
         - 8025:8025
-   mariadb:
-       image: mariadb:10.1.37
-       container_name: mariadb
+   db:
+       image: mysql:5.7
+       command: --innodb_use_native_aio=0
+       container_name: mysql57
        restart: always
+       ports:
+        - 3306:3306
        volumes:
        - ../mysql:/var/lib/mysql
        environment:
            MYSQL_ROOT_PASSWORD: root
-           MYSQL_DATABASE: first_db
    php:
        build: ./php
        container_name: php72
@@ -25,11 +27,12 @@ services:
        volumes:
        - ../:/var/www
        links:
-       - mariadb:db
+       - db
        - mail
    nginx:
        build: ./nginx
        container_name: nginx
+       restart: always
        ports:
        - 80:80
        volumes_from:
