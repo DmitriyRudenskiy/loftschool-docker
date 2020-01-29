@@ -37,7 +37,6 @@ services:
        - 80:80
        volumes_from:
        - php
-       restart: always
        links:
        - php
        - mail

@@ -32,10 +32,25 @@ For help getting started, check out the docs at https://docs.docker.com
 192.168.99.100       mail.local
 ```
 
+Linux
+sudo nano /etc/hosts
+```bash
+127.0.0.1       homework.local
+127.0.0.1       phpmyadmin.local
+127.0.0.1       wordpress.local
+127.0.0.1       laravel.local
+127.0.0.1       mail.local
+```
+
 phpMyAmin
 ===
-$cfg['blowfish_secret'] = 'gIybc37SNJ8';
 mkdir -p /var/www/phpmyadmin.local/tmp/
+mv config.sample.inc.php config.inc.php
+
+nano config.inc.php
+$cfg['Servers'][$i]['host'] = 'mysql57';
+$cfg['blowfish_secret'] = 'gIybc37SNJ8';
+
 
 # Проверка
 wp --allow-root --info
